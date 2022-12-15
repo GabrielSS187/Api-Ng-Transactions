@@ -8,7 +8,6 @@
     "build": "tsc --project tsconfig.json",
     "dev": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts",
     "migrate:latest": "ts-node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:latest",
-    "postinstall": "tsc",
     "test": "jest"
   },
   "engines": {
