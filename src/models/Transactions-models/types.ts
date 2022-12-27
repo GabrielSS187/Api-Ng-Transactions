@@ -18,6 +18,7 @@ export type TAccountData = {
 
 export type TTransactionsSentData = {
   id_transaction: string;
+  photo_url: string;
   user_name_credited: string;
   value_sent: string;
   created_at: string;
@@ -26,6 +27,7 @@ export type TTransactionsSentData = {
 
 export type TTransactionsReceived = {
   id_transaction: string;
+  photo_url: string;
   user_name_debited: string;
   value_received: string;
   looked: boolean;
@@ -33,6 +35,7 @@ export type TTransactionsReceived = {
   hour: string;
 };
 
+//* Test
 export type TTransactionsReceivedAndSent = {
   id_transaction: string;
   user_name_debited?: string;
@@ -43,6 +46,7 @@ export type TTransactionsReceivedAndSent = {
   created_at: string;
   hour: string;
 };
+//* ===========================================
 
 export type TUpdateLooked = {
   id_transaction: string;

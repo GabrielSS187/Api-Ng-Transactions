@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS Class (
-      id_class VARCHAR(255) PRIMARY KEY,
-      name_class VARCHAR(100) UNIQUE NOT NULL,
-      responsible VARCHAR(100) NOT NULL
-);

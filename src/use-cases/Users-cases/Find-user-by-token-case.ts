@@ -10,8 +10,7 @@ import { IUsersModel }
   ){};
 
   async find (userId: number) {
-    const user = await this.usersModel
-    .findUser("", userId);
+    const user = await this.usersModel.findUser("", userId);
 
     if ( !user ) {
       throw new ErrorUserNotFound();

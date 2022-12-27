@@ -1,4 +1,3 @@
-import path from "path";
 import { env } from "process";
 
 const configKnexDatabase = {
