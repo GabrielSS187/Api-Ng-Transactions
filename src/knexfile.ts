@@ -1,3 +1,4 @@
+import path from "path";
 import { env } from "process";
 
 const configKnexDatabase = {
@@ -7,7 +8,7 @@ const configKnexDatabase = {
     searchPath: ["knex", "public"],
       migrations: {
          tableName: "knex_migrations",
-         directory: `${__dirname}/src/data/migrations`,
+         directory: path.resolve(`src/data/migrations`),
          extension: "ts",
       },
       pool: {
