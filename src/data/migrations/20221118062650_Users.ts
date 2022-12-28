@@ -10,8 +10,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string("account_id", 255).unique().unsigned();
     table.boolean("verify").notNullable();
     table.string("code", 255).notNullable().unique();
-    table.timestamp('created_at', { useTz: true });
-    table.timestamp('updated_at', { useTz: true });
+    table.timestamps(true, true,);
     table.foreign("account_id")
     .references("Accounts.id_account")
     .onDelete("CASCADE")

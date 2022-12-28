@@ -11,6 +11,7 @@ const configKnexDatabase = {
          directory: path.resolve(`src/data/migrations`),
          extension: "ts",
       },
+      timezone: "utc",
       pool: {
          min: 2,
          max: 10,
