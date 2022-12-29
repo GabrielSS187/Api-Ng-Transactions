@@ -30,8 +30,8 @@ implements IUsersModel {
     .insert({
       ...data, 
       verify: false,
-      created_at: new Date(),
-      updated_at: new Date(),
+      created_at: new Date() + "UTC",
+      updated_at: new Date() + "UTC",
     });
   };
 

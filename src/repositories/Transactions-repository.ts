@@ -68,7 +68,7 @@ implements ITransactionsModel {
       id_transaction: generateId(), 
       ...data, 
       looked: false,
-      created_at: new Date(),
+      created_at: new Date() + "UTC",
     });
   };
 
