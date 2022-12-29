@@ -29,10 +29,7 @@ implements IUsersModel {
     currentDate.setHours(currentDate.getHours() + 3);
     await this.createAccount(data.account_id);
     await Database.connection(this.#tableNames.user)
-    .insert({...data, verify: false,
-      created_at: currentDate,
-      updated_at: currentDate,
-    });
+    .insert({...data, verify: false,});
   };
 
   async deleteAccount (idUser: number) {

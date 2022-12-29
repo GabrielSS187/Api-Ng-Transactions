@@ -72,7 +72,6 @@ implements ITransactionsModel {
     .insert({ 
       id_transaction: generateId(), 
       ...data, 
-      created_at: currentDate,
       looked: false 
     });
   };
