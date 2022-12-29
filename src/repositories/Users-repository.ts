@@ -25,8 +25,6 @@ implements IUsersModel {
 
   //* Criar um novo usuário.
   async create (data: TUsersData) {
-    let currentDate = new Date();
-    currentDate.setHours(currentDate.getHours() + 3);
     await this.createAccount(data.account_id);
     await Database.connection(this.#tableNames.user)
     .insert({...data, verify: false,});
