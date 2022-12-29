@@ -65,6 +65,7 @@ implements ITransactionsModel {
 
   //* Criar uma nova transação. 
   async create (data: TTransactionsData) {
+    currentDate.setHours(currentDate.getHours() - 3)
     await Database.connection(this.#tableNames.Transactions)
     .insert({ 
       id_transaction: generateId(), 
