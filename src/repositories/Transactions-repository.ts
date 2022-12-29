@@ -68,7 +68,7 @@ implements ITransactionsModel {
       id_transaction: generateId(), 
       ...data, 
       looked: false,
-      created_at: new Date().setHours(new Date().getHours() - 3),
+      created_at: new Date(),
     });
   };
 
