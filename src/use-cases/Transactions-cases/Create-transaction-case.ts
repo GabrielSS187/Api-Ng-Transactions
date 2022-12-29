@@ -94,18 +94,18 @@ export class CreateTransactionCase {
 
     try {
       //* Enviar email para o enviador.
-      await this.mailAdapter.sendMail({
-        email: `${userSend.user_email}`,
-        subject: "NG Transações",
-        body:  sentTransactionEmailSuccess(userSend.user_name, userReceiver.user_name, value.toFixed(2)),
-      });
+      // await this.mailAdapter.sendMail({
+      //   email: `${userSend.user_email}`,
+      //   subject: "NG Transações",
+      //   body:  sentTransactionEmailSuccess(userSend.user_name, userReceiver.user_name, value.toFixed(2)),
+      // });
 
-      // //* Enviar email para o recebedor.
-      await this.mailAdapter.sendMail({
-        email: `${userReceiver.user_email}`,
-        subject: "NG Transações",
-        body:  receiverTransactionEmailSuccess(userSend.user_name, userReceiver.user_name, value.toFixed(2)),
-      });
+      // // //* Enviar email para o recebedor.
+      // await this.mailAdapter.sendMail({
+      //   email: `${userReceiver.user_email}`,
+      //   subject: "NG Transações",
+      //   body:  receiverTransactionEmailSuccess(userSend.user_name, userReceiver.user_name, value.toFixed(2)),
+      // });
 
       await this.transactionsModel.create({
         debited_account_id: userSend.account_id,
@@ -132,6 +132,8 @@ export class CreateTransactionCase {
         statusCode: 201,
       };
     } catch (error) {
+      console.log(error);
+      
       throw new ErrorStandard();
     };
   };

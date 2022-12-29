@@ -14,8 +14,8 @@ import { Database } from "../data/Database";
 import { generateId } from "../utils/generate-id";
 import { formatDate, formatHours } from "../utils/formatData";
 
-const currentDate = new Date();
-currentDate.setHours(currentDate.getHours() - 3);
+// const currentDate = new Date();
+// currentDate.setHours(currentDate.getHours() - 3);
 
 export class TransactionsRepository 
 extends Database 
@@ -66,12 +66,13 @@ implements ITransactionsModel {
 
   //* Criar uma nova transação. 
   async create (data: TTransactionsData) {
+    let currentDate = new Date();
+    currentDate.setHours(currentDate.getHours() + 3);
     await Database.connection(this.#tableNames.Transactions)
     .insert({ 
       id_transaction: generateId(), 
       ...data, 
       created_at: currentDate,
-      updated_at: currentDate,
       looked: false 
     });
   };
