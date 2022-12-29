@@ -14,6 +14,8 @@ import { Database } from "../data/Database";
 import { generateId } from "../utils/generate-id";
 import { formatDate, formatHours } from "../utils/formatData";
 
+const currentDate = new Date();
+
 export class TransactionsRepository 
 extends Database 
 implements ITransactionsModel {
@@ -67,6 +69,8 @@ implements ITransactionsModel {
     .insert({ 
       id_transaction: generateId(), 
       ...data, 
+      created_at: currentDate,
+      updated_at: currentDate,
       looked: false 
     });
   };

@@ -5,6 +5,8 @@ import { Database } from "../data/Database";
 
 import { generateId } from "../utils/generate-id";
 
+const currentDate = new Date();
+
 export class CreateUsersRepository 
 extends Database 
 implements IUsersModel {
@@ -25,9 +27,13 @@ implements IUsersModel {
 
   //* Criar um novo usuário.
   async create (data: TUsersData) {
+    currentDate.setHours(currentDate.getHours() - 3)
     await this.createAccount(data.account_id);
     await Database.connection(this.#tableNames.user)
-    .insert({...data, verify: false});
+    .insert({...data, verify: false,
+      created_at: currentDate,
+      updated_at: currentDate,
+    });
   };
 
   async deleteAccount (idUser: number) {
