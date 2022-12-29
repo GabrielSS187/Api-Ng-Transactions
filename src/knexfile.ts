@@ -5,6 +5,7 @@ const configKnexDatabase = {
   development: {
     client: "pg",
     connection: env.DATABASE_URL,
+    timezone: "UTC",
     searchPath: ["knex", "public"],
       migrations: {
          tableName: "knex_migrations",

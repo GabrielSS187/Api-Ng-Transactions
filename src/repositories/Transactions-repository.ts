@@ -67,7 +67,8 @@ implements ITransactionsModel {
     .insert({ 
       id_transaction: generateId(), 
       ...data, 
-      looked: false 
+      looked: false,
+      created_at: new Date(),
     });
   };
 
@@ -91,8 +92,8 @@ implements ITransactionsModel {
           photo_url: transaction.photo_url,
           user_name_credited: transaction.user_name,
           value_sent: transactionsSent[i].value.toFixed(2),
-          created_at: formatDate(transactionsSent[i].created_at, "short"),
-          hour: formatHours(transactionsSent[i].created_at),
+          created_at: formatDate(new Date(transactionsSent[i].created_at), "short"),
+          hour: formatHours(new Date(transactionsSent[i].created_at)),
         };
 
         transactionsListFormatted.push(formattedTransactionObj);
@@ -123,8 +124,8 @@ implements ITransactionsModel {
         user_name_debited: transaction.user_name,
         value_received: transactionsReceived[i].value.toFixed(2),
         looked: transactionsReceived[i].looked,
-        created_at: formatDate(transactionsReceived[i].created_at, "short"),
-        hour: formatHours(transactionsReceived[i].created_at),
+        created_at: formatDate(new Date(transactionsReceived[i].created_at), "short"),
+        hour: formatHours(new Date(transactionsReceived[i].created_at)),
       };
   
       listTransactionsReceived.push(objFormatted);

@@ -27,7 +27,12 @@ implements IUsersModel {
   async create (data: TUsersData) {
     await this.createAccount(data.account_id);
     await Database.connection(this.#tableNames.user)
-    .insert({...data, verify: false});
+    .insert({
+      ...data, 
+      verify: false,
+      created_at: new Date(),
+      updated_at: new Date()
+    });
   };
 
   async deleteAccount (idUser: number) {
