@@ -14,7 +14,7 @@
     "migrate:list": "ts-node -r dotenv/config ./node_modules/knex/bin/cli.js migrate:list",
     "seed:make": "ts-node -r dotenv/config ./node_modules/knex/bin/cli.js seed:make",
     "seed:run": "ts-node -r dotenv/config ./node_modules/knex/bin/cli.js seed:run",
-    "build": "tsup watch src",
+    "build": "tsup src",
     "test": "jest"
   },
   "engines": {
