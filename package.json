@@ -18,7 +18,7 @@
     "seed:run": "ts-node -r dotenv/config ./node_modules/knex/bin/cli.js --knexfile ./src/config/knexfile.ts seed:run --migrations-directory ../data/seeds"
   },
   "engines": {
-    "node": "18.12.1",
+    "node": "18.x",
     "npmjs": "8.12.1"
   },
   "keywords": [],
