@@ -7,7 +7,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string("credited_account_id", 255).notNullable();
     table.float("value").notNullable();
     table.boolean("looked").defaultTo(false);
-    table.dateTime("created_at", { useTz: false }).defaultTo(knex.fn.now(0));
+    table.dateTime("created_at", { useTz: false }).defaultTo(knex.fn.now(-3));
     table.foreign("debited_account_id")
     .references("Accounts.id_account")
     .onDelete("CASCADE")
