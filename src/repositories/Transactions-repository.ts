@@ -95,7 +95,7 @@ implements ITransactionsModel {
           user_name_credited: transaction.user_name,
           value_sent: transactionsSent[i].value.toFixed(2),
           created_at: formatDate(transactionsSent[i].created_at, "short"),
-          hour: formatHours(transactionsSent[i].created_at),
+          hour: transactionsSent[i].created_at,
         };
 
         transactionsListFormatted.push(formattedTransactionObj);
