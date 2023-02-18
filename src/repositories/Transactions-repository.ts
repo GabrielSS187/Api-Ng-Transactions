@@ -1,3 +1,4 @@
+import moment from "moment-timezone"
 import { ITransactionsModel } 
 from "../models/Transactions-models/ITransactionsModel";
 import {
@@ -88,6 +89,8 @@ implements ITransactionsModel {
       const [ transaction ] = await Database.connection("Users")
       .select("user_name", "photo_url")
       .where("account_id", transactionsSent[i].credited_account_id);
+      const hourFormatted =
+       moment(transactionsSent[i].created_at).tz("America/Sao_Paulo").format("YYYY-MM-DD HH:mm:ss");
       
       const formattedTransactionObj = {
           id_transaction: transactionsSent[i].id_transaction,
@@ -95,7 +98,7 @@ implements ITransactionsModel {
           user_name_credited: transaction.user_name,
           value_sent: transactionsSent[i].value.toFixed(2),
           created_at: formatDate(transactionsSent[i].created_at, "short"),
-          hour: transactionsSent[i].created_at,
+          hour: hourFormatted,
         };
 
         transactionsListFormatted.push(formattedTransactionObj);
