@@ -90,7 +90,7 @@ implements ITransactionsModel {
       .select("user_name", "photo_url")
       .where("account_id", transactionsSent[i].credited_account_id);
       const hourFormatted =
-       moment(transactionsSent[i].created_at).tz("America/Sao_Paulo").format("YYYY-MM-DD HH:mm:ss");
+       moment(transactionsSent[i].created_at).tz("America/Sao_Paulo").format("HH:mm:ss");
       
       const formattedTransactionObj = {
           id_transaction: transactionsSent[i].id_transaction,
