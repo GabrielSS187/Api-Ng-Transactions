@@ -122,6 +122,8 @@ implements ITransactionsModel {
       const [ transaction ] = await Database.connection("Users")
       .select("user_name", "photo_url")
       .where("account_id", transactionsReceived[i].debited_account_id);
+      const hourFormatted =
+      moment(transactionsReceived[i].created_at).tz("America/Sao_Paulo").format("HH:mm:ss");
 
       const objFormatted = {
         id_transaction: transactionsReceived[i].id_transaction,
@@ -130,7 +132,7 @@ implements ITransactionsModel {
         value_received: transactionsReceived[i].value.toFixed(2),
         looked: transactionsReceived[i].looked,
         created_at: formatDate(transactionsReceived[i].created_at, "short"),
-        hour: formatHours(transactionsReceived[i].created_at),
+        hour: hourFormatted,
       };
   
       listTransactionsReceived.push(objFormatted);
