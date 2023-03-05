@@ -1,16 +1,10 @@
 import multer, { Options } from "multer";
 import path from "path";
 
-const tmpFolder = path.resolve(__dirname, "..", "..", "/tmp");
+// const tmpFolder = path.join(process.env.TMPDIR!, "uploads");
 
 export default {
-  dest: tmpFolder,
-  storage: multer.diskStorage({
-    destination: tmpFolder,
-    filename(req, file, callback) {
-      callback(null, `${Date.now()}-${file.originalname}`)
-    }
-  }),
+  storage: multer.memoryStorage(),
   limits: {
     fileSize: 8 * 1024 * 1024 //* 8MB
   },
