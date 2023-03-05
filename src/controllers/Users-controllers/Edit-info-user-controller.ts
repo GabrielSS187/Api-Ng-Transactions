@@ -14,8 +14,8 @@ import { BCryptAdapter } from "../../adapters/Bcrypt-adapter/Bcrypt-adapter";
     
     // const uploadImages = new UploadImages();
     if ( req.file ) {
-      const requestImage = req.file as Express.Multer.File
-      const image = requestImage.originalname;
+      const requestImage: any = req.file as Express.Multer.File
+      const image = requestImage.key!;
       // await uploadImages.execute(requestImage);
       photo_url = `${process.env.AWS_URL}/${image}`; 
     };
