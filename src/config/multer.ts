@@ -20,7 +20,7 @@ export const upload = multer({
     bucket: process.env.AWS_BUCKET!,
     acl: "public-read",
     contentType: multerS3.AUTO_CONTENT_TYPE,
-    key: function (req, file, cb) {
+    key: function (req, file, cb) {  
       cb(null, Date.now().toString() + '-' + file.originalname);
     },
   }),
@@ -28,7 +28,7 @@ export const upload = multer({
   fileFilter: function (req, file, cb) {
     const mimeType = ["image/png", "image/jpeg", "image/gif", "image/jpg"]
 
-    if  (mimeType.includes(file.mimetype) ) {
+    if  (!mimeType.includes(file.mimetype)) {
       return cb(null, false);
     };
 
