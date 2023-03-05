@@ -1,7 +1,7 @@
 import multer, { Options } from "multer";
 import path from "path";
 
-const tmpFolder = path.resolve(__dirname, "..", "..", "/tmp/uploads");
+const tmpFolder = path.resolve(__dirname, "..", "..", "/tmp");
 
 export default {
   dest: tmpFolder,
