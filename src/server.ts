@@ -10,7 +10,7 @@ export const app: Express = express();
 
 dotenv.config();
 
-app.use("/files", express.static(path.resolve("src/uploads/imgs")));
+app.use("/files", express.static(path.resolve("src/tmp")));
 
 app.use(express.json());
 app.use(cors());

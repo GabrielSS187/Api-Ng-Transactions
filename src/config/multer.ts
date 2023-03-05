@@ -1,7 +1,7 @@
 import multer, { Options } from "multer";
 import path from "path";
 
-export const tmpFolder = path.resolve("src/uploads/imgs");
+export const tmpFolder = path.resolve("src/tmp");
 
 export default {
   dest: tmpFolder,
