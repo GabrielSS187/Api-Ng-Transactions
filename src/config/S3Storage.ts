@@ -17,7 +17,7 @@ class S3Storage {
 
   async saveFile(filename: string): Promise<void> {
     const originalPath = path.resolve(multerConfig.dest!, filename);
-
+    
     const ContentType = mime.getType(originalPath);
 
     if ( !ContentType ) {
