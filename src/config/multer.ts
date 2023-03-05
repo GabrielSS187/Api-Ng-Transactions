@@ -1,9 +1,12 @@
 import multer, { Options } from "multer";
 import path from "path";
 
+export const tmpFolder = path.resolve("src/uploads/imgs");
+
 export default {
+  dest: tmpFolder,
   storage: multer.diskStorage({
-    destination: path.resolve("src/uploads/imgs"),
+    destination: tmpFolder,
     filename(req, file, callback) {
       callback(null, `${Date.now()}-${file.originalname}`)
     }

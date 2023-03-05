@@ -5,16 +5,21 @@ from "../../repositories/Users-repository";
 import { EditInfoUserCase } from "../../use-cases/Users-cases/Edit-info-user-case";
 
 import { BCryptAdapter } from "../../adapters/Bcrypt-adapter/Bcrypt-adapter";
+import UploadImages from "../../config/UploadImages";
 
  export class EditInfoUserController {
   async edit (req: Request, res: Response) {
     const idUser = req.userId as number;
     let photo_url: string | undefined;
+    
+    const uploadImages = new UploadImages();
 
     if ( req.file ) {
       const requestImage = req.file as Express.Multer.File
       const image = requestImage.filename;
-      photo_url = `/files/${image}`;
+      await uploadImages.execute(requestImage);
+      
+      photo_url = `${process.env.AWS_URL}/${image}`;    
     };
     
     const { 
