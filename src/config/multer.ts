@@ -1,29 +1,10 @@
-import multer, { Options } from "multer";
-import { S3Client } from "@aws-sdk/client-s3"
-import aws from "aws-sdk";
-import multerS3 from "multer-s3";
-import path from "path";
+import { Options } from "multer";
+import { AwsS3Adapter } from "../adapters/AwsS3Adapter/AwsS3Adapter";
 
-// export const tmpFolder = path.resolve("src/uploads/imgs");
+const awsS3Adapter = new AwsS3Adapter();
 
-const s3 = new S3Client({
-  region: "us-east-1",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS!,
-  },
-});
-
-export const upload = multer({
-  storage: multerS3({
-    s3,
-    bucket: process.env.AWS_BUCKET!,
-    acl: "public-read",
-    contentType: multerS3.AUTO_CONTENT_TYPE,
-    key: function (req, file, cb) {  
-      cb(null, Date.now().toString() + '-' + file.originalname);
-    },
-  }),
+export default {
+  storage: awsS3Adapter.getSaveFile,
   limits: { fileSize: 8 * 1024 * 1024 }, //* limite de 8 MB
   fileFilter: function (req, file, cb) {
     const mimeType = ["image/png", "image/jpeg", "image/gif", "image/jpg"]
@@ -34,4 +15,4 @@ export const upload = multer({
 
     cb(null, true);
   },
-});
+} as Options;

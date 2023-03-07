@@ -2,6 +2,7 @@ import * as yup from "yup";
 
 import { IUsersModel } from "../../models/Users-models/IUsersModel";
 import { IBCryptAdapter } from "../../adapters/IBcrypt-adapter";
+import { AwsS3Adapter } from "../../adapters/AwsS3Adapter/AwsS3Adapter"
 
 import { TEditInfoUserData } from "./types";
 import { 
@@ -19,6 +20,8 @@ import {
   ErrorUserNameInvalid,
   ErrorUserNotFound
 } from "../../errors/UsersErrors";
+
+const aswS3Adapter = new AwsS3Adapter();
 
 export class EditInfoUserCase {
   constructor (
@@ -62,6 +65,13 @@ export class EditInfoUserCase {
           statusCode: 400,
         };
       }; 
+    };
+
+    if ( photo_url ) {
+      if ( userData.photo_url?.includes(process.env.AWS_URL!) ){
+        const fileName = userData.photo_url?.replace(`${process.env.AWS_URL}/`, "");
+        aswS3Adapter.getDeleteFile(fileName!);
+      };
     };
 
     const removeSpacesInString = user_name?.replaceAll(regexRemoveSpaces, "");

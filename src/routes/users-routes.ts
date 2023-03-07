@@ -1,7 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
-// import uploadsConfig from "../config/multer";
-import { upload } from "../config/multer";
+import multerConfig from "../config/multer";
 
 import { authMiddleware } from "../middlewares/auth-middleware";
 
@@ -31,7 +30,7 @@ import {
  } from "../controllers/Users-controllers/Alter-password-controller";
 
 export const usersRoutes = Router();
-// const upload = multer(uploadsConfig);
+const upload = multer(multerConfig);
 
 const createUsersController = new CreateUsersController();
 const loginUserController = new LoginUserController();
